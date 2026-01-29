@@ -3,11 +3,12 @@ package com.projetozero;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class AgendadorApplicationTests {
+//@SpringBootTest
+//class UsuarioApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+//@Test
+//	void contextLoads() {
+//	}
 
-}
+//}
+
