@@ -1,4 +1,4 @@
-package com.projetozero.infrastructure.exception;
+package com.projetozero.infrastructure.exception.dto;
 
 import lombok.*;
 

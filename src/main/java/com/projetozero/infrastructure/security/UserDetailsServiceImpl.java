@@ -2,7 +2,7 @@ package com.projetozero.infrastructure.security;
 
 
 
-import com.projetozero.controller.dto.UsuarioDTO;
+import com.projetozero.controller.dto.UsuarioDTORecord;
 import com.projetozero.infrastructure.client.UsuarioClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -17,10 +17,10 @@ public class UserDetailsServiceImpl {
 
     public UserDetails carregaDadosUsuario(String email, String token){
 
-        UsuarioDTO usuarioDTO = client.buscaUsuarioPorEmail(email, token);
+        UsuarioDTORecord usuarioDTO = client.buscaUsuarioPorEmail(email, token);
         return User
-                .withUsername(usuarioDTO.getEmail()) // Define o nome de usuário como o e-mail
-                .password(usuarioDTO.getSenha()) // Define a senha do usuário
+                .withUsername(usuarioDTO.email())
+                .password(usuarioDTO.senha())
                 .build();
     }
 

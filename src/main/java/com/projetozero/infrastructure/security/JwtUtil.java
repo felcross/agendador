@@ -3,6 +3,7 @@ package com.projetozero.infrastructure.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -12,23 +13,29 @@ import java.util.Date;
 @Service
 public class JwtUtil {
 
-    private final String secretKey = "c3VhLWNoYXZlLXNlY3JldGEtc3VwZXItc2VndXJhLXF1ZS1kZXZlLXNlci1iZW0tbG9uZ2E=";
+    @Value("${jwt.secret}")
+    private String secretKey;
 
-    // Gera uma Key a partir da chave secreta String codificada em Base64
     private SecretKey getSecretKey() {
-        // Decodifica a chave secreta em Base64 padrão e cria uma SecretKey
-        byte[] keyBytes = Base64.getDecoder().decode(secretKey);
-        return Keys.hmacShaKeyFor(keyBytes);
-
+        byte[] key = Base64.getDecoder().decode(secretKey);
+        return Keys.hmacShaKeyFor(key);
     }
 
-    // Extrai as claims do token JWT (informações adicionais do token)
-    private Claims extractClaims(String token) {
-        return Jwts.parser() // Inicia o processo de parsing do token JWT
-                .verifyWith(getSecretKey()) // Configura o parser para verificar a assinatura do token usando a chave de assinatura fornecida
-                .build() // Conclui a configuração do parser
-                .parseSignedClaims(token) // Faz o parsing do token e extrai as claims assinadas
-                .getPayload(); // Obtém o payload (corpo) do token, que contém as claims
+    public String generateToken(String username) {
+        return Jwts.builder()
+                .subject(username)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+                .signWith(getSecretKey())
+                .compact();
+    }
+
+    public Claims extractClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(getSecretKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
     // Extrai o email do usuário do token JWT

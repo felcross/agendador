@@ -1,5 +1,6 @@
 package com.projetozero.infrastructure.repository;
 
+import com.projetozero.infrastructure.Enums.StatusTarefaEnum;
 import com.projetozero.infrastructure.entity.TarefasEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -11,9 +12,11 @@ import java.util.Optional;
 @Repository
 public interface TarefasRepository extends MongoRepository<TarefasEntity,String> {
 
-     List<TarefasEntity> findByDataAgendamentoBetween(LocalDateTime dataInicio,LocalDateTime dataFinal);
+     List<TarefasEntity> findByDataAgendamentoBetweenAndStatus(LocalDateTime dataInicio,
+                                                               LocalDateTime dataFinal,
+                                                               StatusTarefaEnum status);
 
      List<TarefasEntity> findByEmailUsuario(String email);
 
-     Optional<TarefasEntity> findBy(String id);
+     Optional<TarefasEntity> findById(String id);
 }
