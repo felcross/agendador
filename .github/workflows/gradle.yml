@@ -38,6 +38,8 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          USUARIO_URL: ${{ secrets.USUARIO_URL }}
 
 
         run: ./gradlew build
