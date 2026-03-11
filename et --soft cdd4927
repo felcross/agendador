@@ -1,0 +1,36 @@
+[33mcommit 17cce6fcd34a261bdf34f98626accc95557854f2[m[33m ([m[1;31morigin/develop[m[33m)[m
+Author: Felipe <feljava32@gmail.com>
+Date:   Wed Mar 11 16:19:52 2026 -0300
+
+    erro git CI
+
+[1mdiff --git a/src/main/resources/application.properties b/src/main/resources/application.properties[m
+[1mindex 223c458..0804b42 100644[m
+[1m--- a/src/main/resources/application.properties[m
+[1m+++ b/src/main/resources/application.properties[m
+[36m@@ -1,2 +1,23 @@[m
+[31m-spring.application.name=agendador[m
+[31m-usuario.url=localhost:8080[m
+[32m+[m[32mspring.application.name=tarefas[m[41m[m
+[32m+[m[32mjwt.secret=c3VhLWNoYXZlLXNlY3JldGEtc3VwZXItc2VndXJhLXF1ZS1kZXZlLXNlci1iZW0tbG9uZ2E=[m[41m[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Define o fuso horário que o Jackson usará para serializar/desserializar[m[41m[m
+[32m+[m[32mspring.jackson.time-zone=America/Sao_Paulo[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# (Opcional) Garante que o formato de data padrão siga o seu pattern[m[41m[m
+[32m+[m[32mspring.jackson.date-format=dd-MM-yyyy HH:mm:ss[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# MongoDB[m[41m[m
+[32m+[m[32mspring.data.mongodb.uri=mongodb://localhost:27017/db_agendador[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# URL do microserviço de usuário (COM http://)[m[41m[m
+[32m+[m[32musuario.url=http://localhost:8080[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Porta do serviço de tarefas[m[41m[m
+[32m+[m[32mserver.port=8081[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m# Logs[m[41m[m
+[32m+[m[32mlogging.level.com.projetozero=DEBUG[m[41m[m
+[32m+[m[32mlogging.level.org.springframework.security=TRACE[m[41m[m
+[32m+[m[32mlogging.level.org.springframework.web=DEBUG[m[41m[m
