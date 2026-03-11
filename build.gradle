@@ -68,7 +68,7 @@ sonarqube {
 	properties {
 		property "sonar.projectKey", "tarefas"
 		property "sonar.host.url", "http://localhost:9000"
-		property "sonar.token",  project.findProperty("sonar.token")
+		property "sonar.token",  System.getenv("SONAR_TOKEN")
 	}
 
 }
